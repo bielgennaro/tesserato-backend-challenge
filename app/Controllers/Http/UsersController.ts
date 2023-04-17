@@ -3,9 +3,9 @@ import User from 'App/Models/User'
 
 export default class UsersController {
   public async create({ request }: HttpContextContract) {
-    const { name, isEnabled, COMPANY_ID } = request.all()
+    const { name, isEnabled, companyId } = request.all()
 
-    const company = await User.create({ name, isEnabled, COMPANY_ID })
+    const company = await User.create({ name, isEnabled, companyId })
     return company
   }
   public async update() {

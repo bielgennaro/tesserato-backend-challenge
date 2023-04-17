@@ -8,4 +8,4 @@ Route.group(() => {
 Route.group(() => {
   Route.post('users', 'UsersController.create')
   Route.get('users', 'UsersController.list')
-})
+}).prefix('api')

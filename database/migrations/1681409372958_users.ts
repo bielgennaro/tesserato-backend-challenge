@@ -8,7 +8,7 @@ export default class extends BaseSchema {
       table.increments('id').primary()
       table.string('name', 255).notNullable()
       table.boolean('is_enabled').notNullable().defaultTo(true)
-      table.integer('COMPANY_ID').unsigned().references('id').inTable('companies')
+      table.integer('companyId').unsigned().references('id').inTable('companies')
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })
     })
