@@ -9,6 +9,7 @@ export default class extends BaseSchema {
       table.string('name', 255).notNullable()
       table.boolean('is_enabled').notNullable().defaultTo(true)
       table.timestamps()
+      table.timestamp('deleted_at')
     })
   }
 

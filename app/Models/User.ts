@@ -15,9 +15,6 @@ export default class User extends BaseModel {
   @column({ columnName: 'company_id' })
   public companyId: number
 
-  @belongsTo(() => Company)
-  public company: BelongsTo<typeof Company>
-
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 
