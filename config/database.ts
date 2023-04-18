@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /**
  * Config source: https://git.io/JesV9
  *
