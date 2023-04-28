@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Company from 'App/Models/Company'
 import User from 'App/Models/User'

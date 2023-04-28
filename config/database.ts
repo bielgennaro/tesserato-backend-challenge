@@ -31,7 +31,7 @@ const databaseConfig: DatabaseConfig = {
     | Configuration for PostgreSQL database. Make sure to install the driver
     | from npm when using this connection
     |
-    | npm i pg
+    | npm i pg 
     |
     */
     pg: {

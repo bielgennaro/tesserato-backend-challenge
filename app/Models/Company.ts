@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { BaseModel, HasMany, column, hasMany } from '@ioc:Adonis/Lucid/Orm'
 import User from './User'
 import { DateTime } from 'luxon'
