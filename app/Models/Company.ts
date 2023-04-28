@@ -8,7 +8,7 @@ export default class Company extends BaseModel {
   public id: number
 
   @column()
-  public name: string
+  public company_name: string
 
   @column({ columnName: 'is_enabled' })
   public isEnabled: boolean
