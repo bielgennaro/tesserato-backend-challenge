@@ -28,7 +28,7 @@
     "build"
   ],
   "prettier": {
-    "trailingComma": "es5",
+    "trailingComma": "all",
     "semi": false,
     "singleQuote": true,
     "useTabs": false,
@@ -58,6 +58,7 @@
     "@adonisjs/core": "^5.9.0",
     "@adonisjs/lucid": "^18.3.0",
     "@adonisjs/repl": "^3.1.11",
+    "ace-builds": "^1.18.0",
     "luxon": "^3.3.0",
     "pg": "^8.10.0",
     "proxy-addr": "^2.0.7",

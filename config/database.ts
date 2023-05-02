@@ -37,13 +37,17 @@ const databaseConfig: DatabaseConfig = {
     pg: {
       client: 'pg',
       connection: {
-        host: Env.get('DB_HOST', '127.0.0.1') as string,
-        port: Number(Env.get('DB_PORT', 5432)),
-        user: Env.get('DB_USER', 'biel') as string,
-        password: Env.get('DB_PASSWORD', 'biel') as string,
-        database: Env.get('DB_NAME', 'tesserato') as string,
+        host: Env.get('PG_HOST') as string,
+        port: Number(Env.get('PG_PORT')),
+        user: Env.get('PG_USER') as string,
+        password: Env.get('PG_PASSWORD') as string,
+        database: Env.get('PG_NAME') as string,
+      },
+      migrations: {
+        naturalSort: true,
       },
       healthCheck: true,
+      debug: false,
     },
   },
 }
