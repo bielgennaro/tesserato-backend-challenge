@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { BaseModel, HasMany, column, hasMany } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, BelongsTo, HasMany, belongsTo, column, hasMany } from '@ioc:Adonis/Lucid/Orm'
 import User from './User'
 import { DateTime } from 'luxon'
 
@@ -7,10 +7,14 @@ export default class Company extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
-  @column()
-  public company_name: string
+  @column({columnName: 'company_name'})
+  public name: string
 
-  @column({ columnName: 'is_enabled' })
+  @column({columnName: 'company_id'})
+  @belongsTo(() => User)
+  public companyId: BelongsTo<typeof User>
+
+  @column({ columnName: 'is_enabled, default: false' })
   public isEnabled: boolean
 
   @hasMany(() => User)
