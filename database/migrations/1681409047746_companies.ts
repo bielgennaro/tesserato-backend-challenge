@@ -8,10 +8,10 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').primary()
       table.string('name', 255).notNullable()
-      table.integer('company_id').unsigned()
-      table.boolean('is_enabled').notNullable().defaultTo(true)
-      table.timestamps()
-      table.timestamp('deleted_at')
+      table.integer('companyId').unsigned()
+      table.boolean('isEnabled').notNullable().defaultTo(true)
+      table.timestamp('createdAt', { useTz: true })
+      table.timestamp('updatedAt', { useTz: true })
     })
   }
 
