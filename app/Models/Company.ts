@@ -7,21 +7,19 @@ export default class Company extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
-  @column({columnName: 'company_name'})
+  @column()
   public name: string
 
-  @hasMany(() => User)
-  public companyId: HasMany<typeof User>
+  @column()
+  public companyId: number
 
-  @column({ columnName: 'is_enabled, default: false' })
+  @column()
   public isEnabled: boolean
 
+  @column()
   @hasMany(() => User)
   public users: HasMany<typeof User>
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  public updatedAt: DateTime
 }

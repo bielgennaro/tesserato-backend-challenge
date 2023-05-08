@@ -4,13 +4,13 @@ import User from 'App/Models/User'
 
 export default class UsersController {
   public async create({ request, response }: HttpContextContract) {
-    const { id, name, isEnabled, companyId} = request.body()
+    const data = request.body()
   
-    const user = await User.create({ id, name, isEnabled, companyId})
+    const user = await User.create(data)
     return response.status(200).json(user)
   }
-  public async list({ response, params }: HttpContextContract) {
-    const users = await User.find(params.id)
-    return response.status(200).json(users)
+  public async list({ response, request }: HttpContextContract) {
+    const data = request.all()
+    return response.status(200).json(data)
   }
 }

@@ -11,7 +11,6 @@ export default class extends BaseSchema {
       table.boolean('isEnabled').notNullable().defaultTo(false)
       table.integer('companyId').unsigned().notNullable()
       table.timestamp('createdAt', { useTz: true })
-      table.timestamp('updatedAt', { useTz: true })
     })
   }
 
