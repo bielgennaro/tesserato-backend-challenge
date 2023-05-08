@@ -43,9 +43,6 @@ const databaseConfig: DatabaseConfig = {
         password: Env.get('DB_PASSWORD', 'biel') as string,
         database: Env.get('DB_NAME', '') as string,
       },
-      migrations: {
-        naturalSort: true,
-      },
       healthCheck: true,
       debug: false,
     },
