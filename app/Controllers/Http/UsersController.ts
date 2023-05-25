@@ -5,7 +5,7 @@ import User from 'App/Models/User'
 export default class UsersController {
   public async create({ request, response }: HttpContextContract) {
     const data = request.body()
-  
+
     const user = await User.create(data)
     return response.status(200).json(user)
   }
