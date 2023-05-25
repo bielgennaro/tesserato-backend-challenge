@@ -37,10 +37,10 @@ const databaseConfig: DatabaseConfig = {
     pg: {
       client: 'pg',
       connection: {
-        host: Env.get('DB_HOST', '127.0.0.1') as string,
-        port: Number(Env.get('DB_PORT', 5432)),
+        host: Env.get('DB_HOST', 'dev-tesserato') as string,
+        port: Number(Env.get('DB_PORT', 5433)),
         user: Env.get('DB_USER', 'postgres') as string,
-        password: Env.get('DB_PASSWORD', '123456') as string,
+        password: Env.get('DB_PASSWORD', '99831') as string,
         database: Env.get('DB_NAME', 'mydatabase') as string,
       },
       healthCheck: true,
