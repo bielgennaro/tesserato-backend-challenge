@@ -1,0 +1,40 @@
+version: "3.7"
+services:
+  # ====================================================================================================================
+  # POSTGRES SERVER
+  # ====================================================================================================================
+  pg-docker:
+    image: postgres:15
+    container_name: dev-tesserato
+    environment:
+      POSTGRES_DB: tesseratodb
+      POSTGRES_PASSWORD: 123456
+    ports:
+      - 5433:5432
+    volumes:
+      - ./.data/postgresql/data:/var/lib/postgresql/data
+    networks:
+      - dev-network
+  # ====================================================================================================================
+  # PGADMIN
+  # ====================================================================================================================
+  pgadmin-docker:
+    image: dpage/pgadmin4
+    container_name: dev-pgadmin.tesserato
+    environment:
+      PGADMIN_DEFAULT_EMAIL: biel@tesserato.com
+      PGADMIN_DEFAULT_PASSWORD: 99831
+    ports:
+      - 5050:80
+    volumes:
+      - ./.data/pgadmin:/var/lib/pgadmin
+    depends_on:
+      - pg-docker
+    networks:
+      - dev-network
+# ======================================================================================================================
+# REDE
+# ======================================================================================================================
+networks:
+  dev-network:
+    driver: bridge
