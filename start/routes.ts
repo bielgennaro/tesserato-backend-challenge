@@ -12,27 +12,11 @@ Route.get('health', async ({ response }) => {
 Route.group(() => {
   Route.post('/register-company', 'CompaniesController.create')
   Route.get('/companies', 'CompaniesController.list')
-}).prefix('/api')
+  Route.put('enable_or_disable/:id', 'UserController.enableOrDisable')
+  Route.put('/update/:id', 'UserController.update')
+}).prefix('/tsrt')
 
 Route.group(() => {
   Route.post('/register-user', 'UsersController.create')
   Route.get('/users', 'UsersController.list')
-}).prefix('/api')
-
-Route.put('/update/:id', async ({ params, request, response }) => {
-  const { id } = params
-  const { name, users } = request.body()
-
-  try {
-    const user = await User.findOrFail(id)
-
-    user.name = name
-    await user.save()
-
-    await user.related('users').sync(users)
-
-    return response.status(200).json({ message: 'Usuário atualizado com sucesso' })
-  } catch (error) {
-    return response.status(400).json({ error: 'Erro ao atualizar o usuário' })
-  }
-})
+}).prefix('/tsrt')

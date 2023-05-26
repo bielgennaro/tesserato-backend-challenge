@@ -5,4 +5,4 @@ coverage
 .DS_STORE
 .env
 tmp
-.data
+dir_to_ignore/data
