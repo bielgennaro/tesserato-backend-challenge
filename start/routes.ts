@@ -10,13 +10,15 @@ Route.get('health', async ({ response }) => {
 
 Route.group(() => {
   Route.post('/register-company', 'CompaniesController.create')
-  Route.get('/companies', 'CompaniesController.list')
+  Route.get('/list', 'CompaniesController.list')
   Route.put('enable_or_disable/:id', 'CompaniesController.enableOrDisable')
   Route.put('/update/:id', 'CompaniesController.update')
   Route.delete('/delete/:id', 'CompaniesController.delete')
-}).prefix('/tsrt')
+}).prefix('company')
 
 Route.group(() => {
   Route.post('/register-user', 'UsersController.create')
-  Route.get('/users', 'UsersController.list')
-}).prefix('/tsrt')
+  Route.get('/list', 'UsersController.list')
+  Route.put('/update/:id', 'UsersController.update')
+  Route.delete('/delete/:id', 'UsersController.delete')
+}).prefix('/users')
