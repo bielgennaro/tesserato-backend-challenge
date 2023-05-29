@@ -17,30 +17,30 @@ export default class CompanyController {
   }
   public async update({ request, params, response }: HttpContextContract) {
     const { id } = params
-    const { name, users } = request.body()
+    const { name, companyId } = request.body()
 
     try {
-      const user = await User.findOrFail(id)
+      const company = await User.findOrFail(id)
 
-      user.name = name
-      await user.save()
+      company.name = name
+      await company.save()
 
-      await user.related('users').sync(users)
+      await company.related('users').sync(companyId)
 
-      return response.status(200).json({ message: 'Usuário atualizado com sucesso' })
+      return response.status(200).json({ message: 'Compania atualizado com sucesso' })
     } catch (error) {
-      return response.status(400).json({ error: 'Erro ao atualizar o usuário' })
+      return response.status(400).json({ error: 'Erro ao atualizar a compania' })
     }
   }
   public async enableOrDisable({ params }: HttpContextContract) {
     const { id } = params
 
-    const mainUser = await User.findOrFail(id)
-    const linkedUsers = await User.query().where('main_user_id', mainUser.id)
-    const newStatus = !mainUser.isEnabled
+    const companies = await User.findOrFail(id)
+    const linkedUsers = await User.query().where('companies_id', companies.id)
+    const newStatus = !companies.isEnabled
 
-    mainUser.isEnabled = newStatus
-    await mainUser.save()
+    companies.isEnabled = newStatus
+    await companies.save()
 
     linkedUsers.forEach(async (user: User) => {
       user.isEnabled = newStatus
