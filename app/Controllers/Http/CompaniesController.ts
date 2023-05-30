@@ -27,9 +27,9 @@ export default class CompanyController {
 
       await company.related('users').sync(companyId)
 
-      return response.status(200).json({ message: 'Compania atualizado com sucesso' })
+      return response.status(200).json({ message: 'Empresa atualizado com sucesso' })
     } catch (error) {
-      return response.status(400).json({ error: 'Erro ao atualizar a compania' })
+      return response.status(400).json({ error: 'Erro ao atualizar a empresa' })
     }
   }
   public async enableOrDisable({ params }: HttpContextContract) {

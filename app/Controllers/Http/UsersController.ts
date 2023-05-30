@@ -1,17 +1,32 @@
 /* eslint-disable prettier/prettier */
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import User from 'App/Models/User'
+import Entity from 'App/Models/Employer'
 
 export default class UsersController {
   public async create({ request, response }: HttpContextContract) {
-    const data = request.body()
+    try {
+      const { name, employer } = request.body()
 
-    const user = await User.create(data)
-    return response.status(200).json(user)
+      const entity = new Entity()
+      entity.name = name
+      entity.employer = employer || null
+      await entity.save()
+
+      return response.created(entity)
+    } catch (error) {
+      return response.badRequest({ message: 'Erro ao criar empregado' })
+    }
   }
-  public async list({ response, request }: HttpContextContract) {
-    const data = request.all()
-    return response.status(200).json(data)
+
+  public async list({ response }: HttpContextContract) {
+    try {
+      const entities = await Entity.all()
+
+      return response.ok(entities)
+    } catch (error) {
+      return response.badRequest({ message: 'Erro ao listar empregados' })
+    }
   }
 
   public async update({ request, params, response }: HttpContextContract) {
