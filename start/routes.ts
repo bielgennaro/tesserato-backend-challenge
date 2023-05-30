@@ -21,4 +21,22 @@ Route.group(() => {
   Route.get('/list', 'UsersController.list')
   Route.put('/update/:id', 'UsersController.update')
   Route.delete('/delete/:id', 'UsersController.delete')
-}).prefix('/users')
+}).prefix('users')
+
+Route.group(() => {
+  Route.get('/dashboard/companies', 'DashboardController.listCompanies')
+  Route.get('/dashboard/companies-with-users', 'DashboardController.listCompaniesWithUsers')
+  Route.get(
+    '/dashboard/companies-ordered-by-name',
+    'DashboardController.listCompaniesOrderedByName',
+  )
+  Route.get(
+    '/dashboard/companies-ordered-by-user-count',
+    'DashboardController.listCompaniesOrderedByUserCount',
+  )
+}).prefix('dashboard')
+
+Route.group(() => {
+  Route.get('/users', 'DashboardController.listUsers')
+  Route.get('/users-ordered-by-name', 'DashboardController.listUsersOrderedByName')
+}).prefix('dashboard/users')
